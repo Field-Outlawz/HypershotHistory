@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Season 6: Halloween 2 | Hypershot Archives</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gamer: {
+                            dark: '#0a0a0c',
+                            card: '#121318',
+                            accent: '#f97316', 
+                            secondary: '#ef4444', 
+                            glow: 'rgba(249, 115, 22, 0.2)'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-gamer { font-family: 'Rajdhani', sans-serif; }
+
+        
+        @keyframes pulseGlowFiery {
+            0%, 100% { text-shadow: 0 0 12px rgba(249, 115, 22, 0.6), 0 0 25px rgba(239, 68, 68, 0.4); }
+            50% { text-shadow: 0 0 22px rgba(249, 115, 22, 0.9), 0 0 35px rgba(239, 68, 68, 0.7); }
+        }
+        .glow-text-fiery {
+            animation: pulseGlowFiery 2.8s infinite alternate;
+        }
+
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-16px) rotate(2deg); }
+        }
+        .animate-float {
+            animation: float 5s ease-in-out infinite;
+        }
+
+        
+    </style>
+</head>
+<body class="bg-gamer-dark text-slate-100 min-h-screen selection:bg-orange-500 selection:text-black overflow-x-hidden">
+
+    
+    <div class="fixed top-6 left-6 z-50">
+        <a href="index.html" class="flex items-center gap-2 bg-gamer-card/90 backdrop-blur-md border border-slate-800 hover:border-orange-500/50 text-slate-300 hover:text-orange-400 font-semibold px-4 py-2.5 rounded-xl text-sm transition duration-300 shadow-lg shadow-black/50">
+            <span class="text-base">&larr;</span> Back to Archive
+        </a>
+    </div>
+
+    
+    <section class="relative pt-32 pb-12 px-6 overflow-hidden min-h-[420px]">
+        
+        
+        <div class="absolute top-4 -right-12 md:right-10 w-72 sm:w-96 md:w-[480px] pointer-events-none opacity-25 mix-blend-screen z-0 animate-float">
+            <img src="images/cerberus12.png" alt="Hellhound Render" class="w-full h-auto object-contain filter drop-shadow-[0_0_25px_rgba(249,115,22,0.4)]" onerror="this.onerror=null; this.src='Screenshot 2026-10-12 190217.jpg';">
+        </div>
+
+        
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gradient-to-r from-orange-500/15 via-red-600/10 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="flex flex-wrap items-center gap-3 mb-4">
+                <span class="text-xs font-semibold tracking-widest uppercase bg-orange-500/10 px-3 py-1 rounded border border-orange-500/30 text-orange-400">
+                    Active Season
+                </span>
+                <span class="text-xs font-mono text-slate-400">OCT 2026 – PRESENT</span>
+            </div>
+
+            <h1 class="text-4xl md:text-6xl font-bold font-gamer uppercase tracking-wide mb-4">
+                Season 6: <span class="bg-gradient-to-r from-orange-400 via-orange-500 to-red-500 bg-clip-text text-transparent glow-text-fiery">Halloween 2</span>
+            </h1>
+            <p class="text-slate-400 text-base md:text-lg max-w-2xl leading-relaxed">
+                The latest update released to date! Packed with haunting event cosmetics, terrifying weapon blueprints, exclusive operator skins, and spooky seasonal unlocks.
+            </p>
+        </div>
+    </section>
+
+    
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+        <div class="border-t border-orange-500/20 w-full"></div>
+    </div>
+
+    
+    <section class="py-8 px-6 max-w-6xl mx-auto relative z-10">
+        <div class="w-full h-96 md:h-[600px] rounded-2xl overflow-hidden border border-orange-500/30 bg-slate-900/50 relative shadow-[0_0_30px_rgba(249,115,22,0.1)] group">
+            <img src="images/sidecerberus.png" alt="Season 6 Overview Banner" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-orange-400/60 font-mono text-sm bg-slate-900/80\'>[ Season 6 Banner Image Placeholder ]</div>';">
+        </div>
+    </section>
+
+    
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+        <div class="border-b border-orange-500/20 w-full"></div>
+    </div>
+
+    
+    <section class="py-12 px-6 max-w-6xl mx-auto border-b border-slate-800/80 relative z-10">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-gamer-card border border-slate-800/80 rounded-xl p-4 text-center hover:border-orange-500/30 transition">
+                <span class="text-xs text-slate-500 uppercase font-mono">Total Tiers</span>
+                <p class="text-2xl font-bold font-gamer text-orange-400 mt-1">50 Tiers</p>
+            </div>
+            <div class="bg-gamer-card border border-slate-800/80 rounded-xl p-4 text-center hover:border-orange-500/30 transition">
+                <span class="text-xs text-slate-500 uppercase font-mono">Pass Type</span>
+                <p class="text-2xl font-bold font-gamer text-red-500 mt-1">Halloween Event</p>
+            </div>
+            <div class="bg-gamer-card border border-slate-800/80 rounded-xl p-4 text-center hover:border-orange-500/30 transition">
+                <span class="text-xs text-slate-500 uppercase font-mono">Release Date</span>
+                <p class="text-2xl font-bold font-gamer text-slate-200 mt-1">OCT 2026</p>
+            </div>
+            <div class="bg-gamer-card border border-slate-800/80 rounded-xl p-4 text-center hover:border-orange-500/30 transition">
+                <span class="text-xs text-slate-500 uppercase font-mono">Status</span>
+                <p class="text-2xl font-bold font-gamer text-emerald-400 mt-1">Live Now</p>
+            </div>
+        </div>
+    </section>
+
+    
+
+</body>
+</html>

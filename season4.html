@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Season 4: Inferno | Hypershot Archives</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gamer: {
+                            dark: '#0a0a0c',
+                            card: '#121318',
+                            accent: '#f97316', 
+                            secondary: '#ef4444', 
+                            glow: 'rgba(249, 115, 22, 0.2)'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-gamer { font-family: 'Rajdhani', sans-serif; }
+
+        
+        @keyframes pulseGlowFiery {
+            0%, 100% { text-shadow: 0 0 12px rgba(249, 115, 22, 0.6), 0 0 25px rgba(239, 68, 68, 0.4); }
+            50% { text-shadow: 0 0 22px rgba(249, 115, 22, 0.9), 0 0 35px rgba(239, 68, 68, 0.7); }
+        }
+        .glow-text-fiery {
+            animation: pulseGlowFiery 2.8s infinite alternate;
+        }
+
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-16px) rotate(2deg); }
+        }
+        .animate-float {
+            animation: float 5s ease-in-out infinite;
+        }
+
+        
+    </style>
+</head>
+<body class="bg-gamer-dark text-slate-100 min-h-screen selection:bg-orange-500 selection:text-black overflow-x-hidden">
+
+    
+    <div class="fixed top-6 left-6 z-50">
+        <a href="index.html" class="flex items-center gap-2 bg-gamer-card/90 backdrop-blur-md border border-slate-800 hover:border-orange-500/50 text-slate-300 hover:text-orange-400 font-semibold px-4 py-2.5 rounded-xl text-sm transition duration-300 shadow-lg shadow-black/50">
+            <span class="text-base">&larr;</span> Back to Archive
+        </a>
+    </div>
+
+    
+    <section class="relative pt-32 pb-12 px-6 overflow-hidden min-h-[420px]">
+        
+        
+        <div class="absolute top-4 -right-12 md:right-10 w-72 sm:w-96 md:w-[480px] pointer-events-none opacity-25 mix-blend-screen z-0 animate-float">
+            <img src="images/scorched.png" alt="Inferno Beast Render" class="w-full h-auto object-contain filter drop-shadow-[0_0_25px_rgba(249,115,22,0.4)]" onerror="this.onerror=null; this.src='Screenshot 2026-10-12 190217.jpg';">
+        </div>
+
+        
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gradient-to-r from-orange-500/15 via-red-600/15 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="flex flex-wrap items-center gap-3 mb-4">
+                <span class="text-xs font-semibold tracking-widest uppercase bg-orange-500/10 px-3 py-1 rounded border border-orange-500/30 text-orange-400">
+                    Concluded Season
+                </span>
+                <span class="text-xs font-mono text-slate-400">APR 2026</span>
+            </div>
+
+            <h1 class="text-4xl md:text-6xl font-bold font-gamer uppercase tracking-wide mb-4">
+                Season 4: <span class="bg-gradient-to-r from-orange-400 via-orange-500 to-red-500 bg-clip-text text-transparent glow-text-fiery">Mythical Creatures</span>
+            </h1>
+            <p class="text-slate-400 text-base md:text-lg max-w-2xl leading-relaxed">
+                Features Broken Shotgun Secret Of All Time, Season 4 Was Considered One Of The Best BP Seasons
+            </p>
+        </div>
+    </section>
+
+    
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+        <div class="border-t border-orange-500/20 w-full"></div>
+    </div>
+
+    
+    <section class="py-8 px-6 max-w-6xl mx-auto relative z-10">
+        <div class="w-full h-96 md:h-[600px] rounded-2xl overflow-hidden border border-orange-500/30 bg-slate-900/50 relative shadow-[0_0_30px_rgba(249,115,22,0.1)] group">
+            <img src="images/sidescorched.png" alt="Season 4 Overview Banner" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-orange-400/60 font-mono text-sm bg-slate-900/80\'>[ Season 4 Banner Image Placeholder ]</div>';">
+        </div>
+    </section>
+
+    
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+        <div class="border-b border-orange-500/20 w-full"></div>
+    </div>
+
+    
+    <section class="py-12 px-6 max-w-6xl mx-auto border-b border-slate-800/80 relative z-10">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-gamer-card border border-slate-800/80 rounded-xl p-4 text-center hover:border-orange-500/30 transition">
+                <span class="text-xs text-slate-500 uppercase font-mono">Total Tiers</span>
+                <p class="text-2xl font-bold font-gamer text-orange-400 mt-1">30 Tiers</p>
+            </div>
+            <div class="bg-gamer-card border border-slate-800/80 rounded-xl p-4 text-center hover:border-orange-500/30 transition">
+                <span class="text-xs text-slate-500 uppercase font-mono">Pass Type</span>
+                <p class="text-2xl font-bold font-gamer text-red-500 mt-1">Volcanic Theme</p>
+            </div>
+            <div class="bg-gamer-card border border-slate-800/80 rounded-xl p-4 text-center hover:border-orange-500/30 transition">
+                <span class="text-xs text-slate-500 uppercase font-mono">Release Date</span>
+                <p class="text-2xl font-bold font-gamer text-slate-200 mt-1">APR 2026</p>
+            </div>
+            <div class="bg-gamer-card border border-slate-800/80 rounded-xl p-4 text-center hover:border-orange-500/30 transition">
+                <span class="text-xs text-slate-500 uppercase font-mono">Status</span>
+                <p class="text-2xl font-bold font-gamer text-slate-400 mt-1">Archived</p>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="py-16 px-6 max-w-6xl mx-auto border-b border-slate-800/80 relative z-10">
+        <div class="mb-10">
+            <span class="text-xs text-red-500 font-semibold tracking-widest uppercase bg-red-500/10 px-3 py-1 rounded border border-red-500/30">Secret</span>
+            <h2 class="text-3xl md:text-4xl font-bold font-gamer uppercase tracking-wide mt-3 bg-gradient-to-r from-red-500 via-orange-500 to-amber-500 bg-clip-text text-transparent">Secret Highlight</h2>
+            <p class="text-slate-400 text-sm mt-1">Exclusive secret and showcase footage from Season 4.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+            
+            
+            <div class="md:col-span-4 bg-gamer-card border border-red-500/30 rounded-2xl p-5 shadow-[0_0_25px_rgba(239,68,68,0.1)] group hover:border-red-500/60 transition duration-300 flex flex-col justify-between h-full">
+                <div>
+                    <div class="aspect-[4/3] rounded-xl overflow-hidden border border-slate-800 bg-slate-900/60 flex items-center justify-center relative">
+                        <img src="images/scorched.png" alt="Secret Highlight Image" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex flex-col items-center justify-center text-slate-500 font-mono text-xs gap-2 p-4 text-center bg-slate-900/80\'><span>[ Secret Image Frame ]</span><span class=\'text-[10px] text-red-400/70\'>Replace with images/secret_highlight.webp</span></div>';">
+                    </div>
+                    <div class="mt-4">
+                        <span class="text-[10px] uppercase font-bold text-red-400 tracking-wider font-mono">Hidden Secret Blueprint</span>
+                        <h3 class="text-xl font-bold font-gamer text-white mt-0.5">Scorched Earth</h3>
+                        <p class="text-slate-400 text-xs mt-2 leading-relaxed">
+                            Can only be obtained by lucky boxes|
+                            Needs rigorous grinding
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-4 pt-3 border-t border-slate-800/80 space-y-2 text-xs text-slate-400">
+                    <div class="flex items-center justify-between text-[11px] font-mono">
+                        <span class="text-slate-500">Rarity Tier:</span>
+                        <span class="text-red-400 font-semibold">Secret</span>
+                    </div>
+                    <div class="flex items-center justify-between text-[11px] font-mono">
+                        <span class="text-slate-500">Chances Of Obtaining:</span>
+                        <span class="text-amber-400 font-semibold">0.025% per card</span>
+                    </div>
+                    <div class="flex items-center justify-between text-[11px] font-mono">
+                        <span class="text-slate-500">No Of Cards Needed</span>
+                        <span class="text-amber-400 font-semibold">2</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 leading-relaxed pt-1">
+                        One of the first kind of secret to blend into shotguns, broken in shot-mid range, come with a passive skill
+                    </p>
+                </div>
+            </div>
+
+            
+            <div class="md:col-span-8 bg-gamer-card border border-orange-500/30 rounded-2xl p-5 shadow-[0_0_25px_rgba(249,115,22,0.08)] hover:border-orange-500/60 transition duration-300 flex flex-col justify-between h-full">
+                
+                <div class="aspect-video rounded-xl overflow-hidden border border-slate-800 bg-black flex items-center justify-center relative">
+                    <video controls preload="metadata" poster="images/season6.webp" class="w-full h-full object-cover">
+                        <source src="videos/lotus.mp4" type="video/mp4">
+                        <source src="videos/lotus.mp4" type="video/webm">
+                        <p class="text-slate-500 text-xs font-mono p-4 text-center">Your browser does not support HTML5 video tags.</p>
+                    </video>
+                </div>
+
+                
+                <div class="mt-4 pt-3 border-t border-slate-800/80">
+                    <span class="text-[10px] uppercase font-bold text-orange-400 tracking-wider font-mono">In-Game Footage</span>
+                    <h3 class="text-xl font-bold font-gamer text-white mt-0.5">Gameplay Shooting Showcase</h3>
+                    <p class="text-slate-400 text-xs mt-1.5 leading-relaxed">
+                        Watch the full inspection of the Season 4 secret weapon in live action.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    
+    <section class="py-16 px-6 max-w-6xl mx-auto border-b border-slate-800/80 relative z-10">
+        <div class="mb-10">
+            <span class="text-xs font-semibold tracking-widest uppercase bg-gradient-to-r from-red-500/20 via-yellow-500/20 to-purple-500/20 px-3 py-1 rounded border border-purple-500/30 text-purple-300">
+                Mythic Blueprint 1
+            </span>
+            <h2 class="text-3xl md:text-4xl font-bold font-gamer uppercase tracking-wide mt-3 rainbow-title-text">
+                
+                Mythic Highlight
+            </h2>
+            <p class="text-slate-400 text-sm mt-1">Primary mythic weapon blueprint showcase for Season 4.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+            
+           
+            <div class="md:col-span-4 bg-gamer-card border border-purple-500/30 rounded-2xl p-5 shadow-[0_0_25px_rgba(168,85,247,0.1)] group hover:border-purple-500/60 transition duration-300 flex flex-col justify-between h-full">
+                <div>
+                    <div class="aspect-[4/3] rounded-xl overflow-hidden border border-slate-800 bg-slate-900/60 flex items-center justify-center relative">
+                        <img src="images/season4/1.png" alt="Mythic 1 Image" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex flex-col items-center justify-center text-slate-500 font-mono text-xs gap-2 p-4 text-center bg-slate-900/80\'><span>[ Mythic 1 Frame ]</span><span class=\'text-[10px] text-purple-400/70\'>Replace with images/mythic1.webp</span></div>';">
+                    </div>
+                    <div class="mt-4">
+                        <span class="text-[10px] uppercase font-bold text-purple-400 tracking-wider font-mono">Mythic 1</span>
+                        <h3 class="text-xl font-bold font-gamer text-white mt-0.5">Ageis Horn</h3>
+                        <p class="text-slate-400 text-xs mt-2 leading-relaxed">
+                            Stuns your ememy on impact, best suited for arcade.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-4 pt-3 border-t border-slate-800/80 space-y-2 text-xs text-slate-400">
+                    <div class="flex items-center justify-between text-[11px] font-mono">
+                        <span class="text-slate-500">Rarity Tier:</span>
+                        <span class="text-purple-400 font-semibold">Mythic</span>
+                    </div>
+                    <div class="flex items-center justify-between text-[11px] font-mono">
+                        <span class="text-slate-500">Unlock Chances</span>
+                        <span class="text-purple-300 font-semibold">---</span>
+                    </div>
+                    <div class="flex items-center justify-between text-[11px] font-mono">
+                        <span class="text-slate-500">Unlocked by</span>
+                        <span class="text-purple-300 font-semibold">BP coins requires 5k</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 leading-relaxed pt-1">
+                        Requires accumulating Bp coins, Spend them and unlock this weapon
+                    </p>
+                </div>
+            </div>
+
+            
+            <div class="md:col-span-8 bg-gamer-card border border-purple-500/30 rounded-2xl p-5 shadow-[0_0_25px_rgba(168,85,247,0.08)] hover:border-purple-500/60 transition duration-300 flex flex-col justify-between h-full">
+                
+                <div class="aspect-video rounded-xl overflow-hidden border border-slate-800 bg-black flex items-center justify-center relative">
+                    <video controls preload="metadata" poster="images/mythic1.webp" class="w-full h-full object-cover">
+                        <source src="videos/tiger.mp4" type="video/mp4">
+                        <source src="videos/tiger.mp4" type="video/webm">
+                        <p class="text-slate-500 text-xs font-mono p-4 text-center">Your browser does not support HTML5 video tags.</p>
+                    </video>
+                </div>
+
+                
+                <div class="mt-4 pt-3 border-t border-slate-800/80">
+                    <span class="text-[10px] uppercase font-bold text-purple-400 tracking-wider font-mono">In-Game Inspection</span>
+                    <h3 class="text-xl font-bold font-gamer text-white mt-0.5">Ageis Shooting Showcase</h3>
+                    <p class="text-slate-400 text-xs mt-1.5 leading-relaxed">
+                        Watch the full inspection of the Season 4 mythic weapon in live action.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    
+    <section class="py-16 px-6 max-w-6xl mx-auto border-b border-slate-800/80 relative z-10">
+        <div class="mb-10">
+            <span class="text-xs font-semibold tracking-widest uppercase bg-gradient-to-r from-red-500/20 via-yellow-500/20 to-purple-500/20 px-3 py-1 rounded border border-purple-500/30 text-purple-300">
+                Mythic Blueprint 2
+            </span>
+            <h2 class="text-3xl md:text-4xl font-bold font-gamer uppercase tracking-wide mt-3 rainbow-title-text">
+                
+                Mythic Highlight
+            </h2>
+            <p class="text-slate-400 text-sm mt-1">Primary mythic weapon blueprint showcase for Season 4.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+            
+            
+            <div class="md:col-span-4 bg-gamer-card border border-purple-500/30 rounded-2xl p-5 shadow-[0_0_25px_rgba(168,85,247,0.1)] group hover:border-purple-500/60 transition duration-300 flex flex-col justify-between h-full">
+                <div>
+                    <div class="aspect-[4/3] rounded-xl overflow-hidden border border-slate-800 bg-slate-900/60 flex items-center justify-center relative">
+                        <img src="images/season4/2.png" alt="Mythic 1 Image" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex flex-col items-center justify-center text-slate-500 font-mono text-xs gap-2 p-4 text-center bg-slate-900/80\'><span>[ Mythic 1 Frame ]</span><span class=\'text-[10px] text-purple-400/70\'>Replace with images/mythic1.webp</span></div>';">
+                    </div>
+                    <div class="mt-4">
+                        <span class="text-[10px] uppercase font-bold text-purple-400 tracking-wider font-mono">Mythic 2</span>
+                        <h3 class="text-xl font-bold font-gamer text-white mt-0.5">Cursed Horn</h3>
+                        <p class="text-slate-400 text-xs mt-2 leading-relaxed">
+                            Similar to ageis horn, also stuns enemy on impact.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-4 pt-3 border-t border-slate-800/80 space-y-2 text-xs text-slate-400">
+                    <div class="flex items-center justify-between text-[11px] font-mono">
+                        <span class="text-slate-500">Rarity Tier:</span>
+                        <span class="text-purple-400 font-semibold">Mythic</span>
+                    </div>
+                    <div class="flex items-center justify-between text-[11px] font-mono">
+                        <span class="text-slate-500">Unlock Chances</span>
+                        <span class="text-purple-300 font-semibold">0.5%</span>
+                    </div>
+                    <div class="flex items-center justify-between text-[11px] font-mono">
+                        <span class="text-slate-500">No Of Cards Required</span>
+                        <span class="text-purple-300 font-semibold">2</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 leading-relaxed pt-1">
+                        Relatively Easy to obtain compared to the mythic 1, involves getting lucky!!
+                    </p>
+                </div>
+            </div>
+
+            
+            <div class="md:col-span-8 bg-gamer-card border border-purple-500/30 rounded-2xl p-5 shadow-[0_0_25px_rgba(168,85,247,0.08)] hover:border-purple-500/60 transition duration-300 flex flex-col justify-between h-full">
+                
+                <div class="aspect-video rounded-xl overflow-hidden border border-slate-800 bg-black flex items-center justify-center relative">
+                    <video controls preload="metadata" poster="images/mythic1.webp" class="w-full h-full object-cover">
+                        <source src="videos/cursed.mp4" type="video/mp4">
+                        <source src="videos/cursed.mp4" type="video/webm">
+                        <p class="text-slate-500 text-xs font-mono p-4 text-center">Your browser does not support HTML5 video tags.</p>
+                    </video>
+                </div>
+
+                
+                <div class="mt-4 pt-3 border-t border-slate-800/80">
+                    <span class="text-[10px] uppercase font-bold text-purple-400 tracking-wider font-mono">In-Game Inspection</span>
+                    <h3 class="text-xl font-bold font-gamer text-white mt-0.5">Cursed Horn Shooting Showcase</h3>
+                    <p class="text-slate-400 text-xs mt-1.5 leading-relaxed">
+                        Watch the full inspection of the Season 4 mythic weapon in live action.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    
+
+   
+    <section class="py-16 px-6 max-w-6xl mx-auto relative z-10">
+        <div class="mb-10">
+            <span class="text-xs text-orange-400 font-semibold tracking-widest uppercase bg-orange-500/10 px-3 py-1 rounded border border-orange-500/20">Tier 3</span>
+            <h2 class="text-3xl font-bold font-gamer uppercase tracking-wide mt-3 text-slate-100">Legendaries</h2>
+            <p class="text-slate-400 text-sm mt-1">Inpect all the leagendaries featured during this season.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <div class="bg-gamer-card border border-slate-800/80 rounded-xl p-5 hover:border-orange-500/50 transition duration-300 group">
+                <div class="h-48 rounded-lg mb-4 overflow-hidden border border-slate-800 bg-slate-900/50 flex items-center justify-center text-slate-600 text-xs font-mono">
+                    <img src="images/season4/6.png" alt="Tier 100 Reward" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-slate-600 font-mono text-xs\'>[ Tier 100 Blueprint Render ]</span>';">
+                </div>
+                <span class="text-[10px] uppercase font-bold text-orange-500 tracking-wider">Bp coins Spending</span>
+                <h3 class="text-xl font-bold font-gamer mt-1 text-white group-hover:text-orange-400 transition">Riptidee drake</h3>
+                
+            </div>
+
+            
+            <div class="bg-gamer-card border border-slate-800/80 rounded-xl p-5 hover:border-orange-500/50 transition duration-300 group">
+                <div class="h-48 rounded-lg mb-4 overflow-hidden border border-slate-800 bg-slate-900/50 flex items-center justify-center text-slate-600 text-xs font-mono">
+                    <img src="images/season4/4.png" alt="Tier 100 Reward" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-slate-600 font-mono text-xs\'>[ Tier 100 Blueprint Render ]</span>';">
+                </div>
+                <span class="text-[10px] uppercase font-bold text-orange-500 tracking-wider">Tiers Reward</span>
+                <h3 class="text-xl font-bold font-gamer mt-1 text-white group-hover:text-orange-400 transition">Draco Pheonix</h3>
+                
+            </div>
+
+            <div class="bg-gamer-card border border-slate-800/80 rounded-xl p-5 hover:border-orange-500/50 transition duration-300 group">
+                <div class="h-48 rounded-lg mb-4 overflow-hidden border border-slate-800 bg-slate-900/50 flex items-center justify-center text-slate-600 text-xs font-mono">
+                    <img src="images/season4/3.png" alt="Tier 100 Reward" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-slate-600 font-mono text-xs\'>[ Tier 100 Blueprint Render ]</span>';">
+                </div>
+                <span class="text-[10px] uppercase font-bold text-orange-500 tracking-wider">Tiers Reward</span>
+                <h3 class="text-xl font-bold font-gamer mt-1 text-white group-hover:text-orange-400 transition">Ice Dragon p90</h3>
+                
+            </div>
+
+            
+
+            <div class="bg-gamer-card border border-slate-800/80 rounded-xl p-5 hover:border-orange-500/50 transition duration-300 group">
+                <div class="h-48 rounded-lg mb-4 overflow-hidden border border-slate-800 bg-slate-900/50 flex items-center justify-center text-slate-600 text-xs font-mono">
+                    <img src="images/season4/7.png" alt="Tier 100 Reward" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-slate-600 font-mono text-xs\'>[ Tier 100 Blueprint Render ]</span>';">
+                </div>
+                <span class="text-[10px] uppercase font-bold text-orange-500 tracking-wider">Tiers Reward</span>
+                <h3 class="text-xl font-bold font-gamer mt-1 text-white group-hover:text-orange-400 transition">Dragon Draggers</h3>
+                
+            </div>
+            
+            <div class="bg-gamer-card border border-slate-800/80 rounded-xl p-5 hover:border-orange-500/50 transition duration-300 group">
+                <div class="h-48 rounded-lg mb-4 overflow-hidden border border-slate-800 bg-slate-900/50 flex items-center justify-center text-slate-600 text-xs font-mono">
+                    <img src="images/season4/5.png" alt="Tier 100 Reward" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-slate-600 font-mono text-xs\'>[ Tier 100 Blueprint Render ]</span>';">
+                </div>
+                <span class="text-[10px] uppercase font-bold text-orange-500 tracking-wider">Tiers Reward</span>
+                <h3 class="text-xl font-bold font-gamer mt-1 text-white group-hover:text-orange-400 transition">Dual Pheonix</h3>
+                
+            </div>
+
+            
+
+            
+                
+            </div>
+        </div>
+    </section>
+
+
+    
+
+    
+
+    
+
+</body>
+</html>

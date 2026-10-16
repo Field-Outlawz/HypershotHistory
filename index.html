@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hypershot History | History & Battle Pass Database</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gamer: {
+                            dark: '#07080b',
+                            card: '#0f1016',
+                            border: '#1f2430',
+                            accent: '#06b6d4', 
+                            purple: '#a855f7', 
+                            glow: 'rgba(6, 182, 212, 0.2)'
+                        }
+                    },
+                    fontFamily: {
+                        gamer: ['Rajdhani', 'sans-serif'],
+                        body: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+
+    <style>
+    
+    @keyframes shineSweep {
+        0% { transform: translateX(-150%) skewX(-25deg); }
+        100% { transform: translateX(150%) skewX(-25deg); }
+    }
+    
+    .group:hover .card-shine {
+        animation: shineSweep 0.85s ease-in-out forwards;
+    }
+    </style>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #07080b; }
+        h1, h2, h3, .font-gamer { font-family: 'Rajdhani', sans-serif; }
+
+        
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .hero-fade-in {
+            opacity: 0;
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .hero-delay-1 { animation-delay: 0.1s; }
+        .hero-delay-2 { animation-delay: 0.3s; }
+        .hero-delay-3 { animation-delay: 0.5s; }
+
+        
+        @keyframes electricPulse {
+            0%, 100% { text-shadow: 0 0 12px rgba(6, 182, 212, 0.6), 0 0 25px rgba(168, 85, 247, 0.4); }
+            50% { text-shadow: 0 0 22px rgba(6, 182, 212, 0.9), 0 0 40px rgba(168, 85, 247, 0.7); }
+        }
+        .glow-text {
+            animation: electricPulse 3.5s infinite alternate;
+        }
+
+        
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .custom-horizontal-scrollbar::-webkit-scrollbar {
+            height: 6px;
+        }
+        .custom-horizontal-scrollbar::-webkit-scrollbar-track {
+            background: rgba(31, 36, 48, 0.5);
+            border-radius: 9999px;
+        }
+        .custom-horizontal-scrollbar::-webkit-scrollbar-thumb {
+            background: linear-gradient(90deg, #63dcf2, #a855f7);
+            border-radius: 9999px;
+        }
+        .custom-horizontal-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #06b6d4;
+        }
+
+        
+        .bp-card {
+            transition: all 0.3s ease;
+        }
+        .bp-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.25);
+        }
+    </style>
+</head>
+<body class="bg-gamer-dark text-slate-100 min-h-screen selection:bg-gamer-accent selection:text-black overflow-x-hidden">
+
+    
+    <nav class="fixed top-0 w-full z-50 bg-gamer-dark/80 backdrop-blur-md border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="text-2xl font-bold tracking-wider font-gamer text-transparent bg-clip-text bg-gradient-to-r from-gamer-accent via-cyan-300 to-gamer-purple">
+                HYPERSHOT<span class="text-white">.HISTORY</span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-400">
+                <a href="#history" class="hover:text-gamer-accent transition">Timeline</a>
+                <a href="#battlepass" class="hover:text-gamer-accent transition">Battle Passes</a>
+                <a href="#weapons" class="hover:text-gamer-accent transition">Events</a>
+                <a href="#og" class="hover:text-gamer-accent transition">OG Archive</a>
+            </div>
+            <a href="#weapons" class="bg-gradient-to-r from-gamer-accent to-gamer-purple text-black font-bold px-4 py-2 rounded text-sm hover:opacity-90 transition shadow-[0_0_20px_rgba(6,182,212,0.4)]">
+                Explore Database
+            </a>
+        </div>
+    </nav>
+
+    
+    <section class="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 overflow-hidden">
+        
+        <div class="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gamer-accent/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute top-1/3 right-1/4 translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gamer-purple/15 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <span class="hero-fade-in hero-delay-1 inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-widest text-gamer-accent uppercase bg-gamer-accent/10 rounded border border-gamer-accent/30">
+                Community Lore & Database
+            </span>
+            
+            <h1 class="hero-fade-in hero-delay-2 text-5xl md:text-7xl font-bold tracking-tight mb-6 font-gamer uppercase">
+                History Of <span class="text-transparent bg-clip-text bg-gradient-to-r from-gamer-accent via-cyan-200 to-gamer-purple glow-text">HYPERSHOT</span>
+            </h1>
+
+            <p class="hero-fade-in hero-delay-3 text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                Explore the forgotten battle passes | OG weapons | legacy server history from Season 1 to Season 6.
+            </p>
+            <div class="hero-fade-in hero-delay-3 flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#battlepass" class="bg-gradient-to-r from-gamer-accent to-gamer-purple text-slate-950 font-bold px-8 py-3.5 rounded text-base hover:opacity-90 transition shadow-[0_0_25px_rgba(6,182,212,0.4)]">
+                    Browse Battle Passes
+                </a>
+                <a href="#history" class="bg-slate-900/80 border border-slate-700/80 text-slate-200 font-semibold px-8 py-3.5 rounded text-base hover:bg-slate-800 transition">
+                    View Timeline
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="history" class="py-20 px-6 max-w-5xl mx-auto border-t border-slate-800/80">
+        <div class="reveal-on-scroll text-center mb-16">
+            <span class="text-xs text-gamer-accent font-semibold tracking-widest uppercase bg-gamer-accent/10 px-3 py-1 rounded border border-gamer-accent/20">Chronological Data</span>
+            <h2 class="text-3xl md:text-5xl font-bold font-gamer uppercase tracking-wide mt-3">Evolution Timeline</h2>
+            <p class="text-slate-400 text-sm mt-1 max-w-lg mx-auto">All historical seasons logged in sequence.</p>
+        </div>
+
+        <div class="relative border-l border-slate-800/80 ml-4 md:ml-32 space-y-12">
+            
+            <div class="reveal-on-scroll relative pl-8 md:pl-12">
+                <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 bg-gamer-accent rounded-full shadow-[0_0_10px_#06b6d4]"></div>
+                <div class="text-xs text-gamer-accent font-mono mb-1 font-bold">OCT 2026</div>
+                <h3 class="text-2xl font-bold font-gamer text-white">Season 6: Halloween 2</h3>
+                <p class="text-slate-400 text-sm mt-1">The latest update released to date, introducing horror cosmetics, haunting events, and spooky blueprints.</p>
+                <a href="season6.html" class="text-gamer-accent text-xs font-semibold hover:underline flex items-center gap-1">
+                    Inspect Details &rarr;
+                </a>
+            
+            </div>
+
+            
+            <div class="reveal-on-scroll relative pl-8 md:pl-12">
+                <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 bg-slate-700 rounded-full"></div>
+                <div class="text-xs text-slate-400 font-mono mb-1">JULY 2026</div>
+                <h3 class="text-2xl font-bold font-gamer text-white">Season 5: Celestial</h3>
+                <p class="text-slate-400 text-sm mt-1">Featuring calm, space-inspired aesthetic styles, atmospheric dynamic lobbies, and smooth visual upgrades.</p>
+            </div>
+
+            
+            <div class="reveal-on-scroll relative pl-8 md:pl-12">
+                <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 bg-slate-700 rounded-full"></div>
+                <div class="text-xs text-slate-400 font-mono mb-1">MAY 2026</div>
+                <h3 class="text-2xl font-bold font-gamer text-white">Season 4: Mythical Creatures</h3>
+                <p class="text-slate-400 text-sm mt-1">Regarded as one of the best passes in server history, themed entirely around legendary beasts and dragon blueprints.</p>
+            </div>
+
+            
+            <div class="reveal-on-scroll relative pl-8 md:pl-12">
+                <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 bg-slate-700 rounded-full"></div>
+                <div class="text-xs text-slate-400 font-mono mb-1">MARCH 2026</div>
+                <h3 class="text-2xl font-bold font-gamer text-white">Season 3: Hells And Heaven</h3>
+                <p class="text-slate-400 text-sm mt-1">Contained a massive hidden secret and was the first battle pass to feature hidden level unlocks and dual realm gear.</p>
+            </div>
+
+           
+            <div class="reveal-on-scroll relative pl-8 md:pl-12">
+                <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 bg-slate-700 rounded-full"></div>
+                <div class="text-xs text-slate-400 font-mono mb-1">JAN 2026</div>
+                <h3 class="text-2xl font-bold font-gamer text-white">Season 2: Christmas BP</h3>
+                <p class="text-slate-400 text-sm mt-1">Themed around the winter holidays, featuring the highly valuable and legendary mythic item "ELE".</p>
+            </div>
+
+            
+            <div class="reveal-on-scroll relative pl-8 md:pl-12">
+                <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 bg-slate-700 rounded-full"></div>
+                <div class="text-xs text-slate-400 font-mono mb-1">NOV 2025</div>
+                <h3 class="text-2xl font-bold font-gamer text-white">Season 1: Halloween BP</h3>
+                <p class="text-slate-400 text-sm mt-1">The very first original battle pass where even epic tier rewards hold massive OG rarity and trading value.</p>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="battlepass" class="py-20 px-6 max-w-7xl mx-auto border-t border-slate-800/80">
+        <div class="reveal-on-scroll flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
+            <div>
+                <span class="text-xs text-gamer-accent font-semibold tracking-widest uppercase bg-gamer-accent/10 px-3 py-1 rounded border border-gamer-accent/20">Progression Log</span>
+                <h2 class="text-3xl md:text-4xl font-bold font-gamer uppercase tracking-wide mt-3">Battle Pass Archives</h2>
+                <p class="text-slate-400 text-sm mt-1">Swipe or use arrows to navigate through the horizontal timeline of seasons.</p>
+            </div>
+
+            
+            <div class="flex items-center gap-3">
+                <span id="scrollIndicatorText" class="text-xs font-mono text-slate-400 mr-2">Season 1 of 6</span>
+                <button id="slideLeft" aria-label="Scroll left" class="bg-gamer-card border border-slate-800 text-slate-300 hover:text-gamer-accent hover:border-gamer-accent/50 p-3 rounded-lg transition active:scale-95 shadow-md">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+                <button id="slideRight" aria-label="Scroll right" class="bg-gamer-card border border-slate-800 text-slate-300 hover:text-gamer-accent hover:border-gamer-accent/50 p-3 rounded-lg transition active:scale-95 shadow-md">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        
+        <div id="carouselContainer" class="reveal-on-scroll flex gap-6 overflow-x-auto snap-x snap-mandatory py-4 pb-8 custom-horizontal-scrollbar scroll-smooth cursor-grab select-none">
+            
+            
+            <div class="bp-card snap-start shrink-0 w-[300px] sm:w-[350px] bg-gamer-card border border-gamer-accent/40 rounded-2xl p-6 relative overflow-hidden group shadow-[0_0_20px_rgba(6,182,212,0.05)]">
+                <div class="absolute top-0 right-0 bg-gamer-accent text-black text-[10px] font-bold px-3 py-1 rounded-bl uppercase tracking-widest font-gamer">Active</div>
+                <div class="h-40 rounded-lg mb-4 overflow-hidden border border-gamer-accent/20 bg-slate-900/50 flex items-center justify-center text-slate-600 font-mono text-xs">
+                    <img src="images/halowen2.webp" alt="Season 6 Banner" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-gamer-accent font-mono text-xs\'>[ Season 6: Halloween 2 ]</span>';">
+                </div>
+                <div class="text-xs text-gamer-accent font-mono mb-1 font-bold">OCT 2026 – PRESENT</div>
+                <h3 class="text-2xl font-bold font-gamer mb-2 text-white group-hover:text-gamer-accent transition">Season 6: Halloween 2</h3>
+                <p class="text-slate-400 text-sm mb-6 line-clamp-3">The latest update released to date, introducing horror cosmetics, haunting events, and spooky blueprints.</p>
+                <div class="flex items-center justify-between pt-4 border-t border-slate-800/80">
+                    <span class="text-xs text-slate-400">50 Tiers</span>
+                    <a href="season6.html" class="text-gamer-accent text-xs font-semibold hover:underline flex items-center gap-1">Inspect Details &rarr;</a>
+                </div>
+            </div>
+
+            
+            <div class="bp-card snap-start shrink-0 w-[300px] sm:w-[350px] bg-gamer-card border border-slate-800 rounded-2xl p-6 relative overflow-hidden group hover:border-slate-700 transition">
+                <div class="absolute top-0 right-0 bg-slate-800 text-slate-400 text-[10px] font-bold px-3 py-1 rounded-bl uppercase tracking-widest font-gamer">Concluded</div>
+                <div class="h-36 rounded-lg mb-4 overflow-hidden border border-gamer-accent/20">
+                <img src="images/celestrial.webp" alt="Season 6 Banner" class="w-full h-full object-cover">
+                </div>
+                <div class="text-xs text-slate-400 font-mono mb-1">JULY 2026</div>
+                <h3 class="text-2xl font-bold font-gamer mb-2 text-white group-hover:text-gamer-accent transition">Season 5: Celestrial</h3>
+                <p class="text-slate-400 text-sm mb-6 line-clamp-3">Brought a calmer, clean aesthetic style with starry weapon wraps and smooth cosmological designs to the server.</p>
+                <div class="flex items-center justify-between pt-4 border-t border-slate-800/80">
+                    <span class="text-xs text-slate-400">50 Tiers</span>
+                    <a href="season5.html" class="text-gamer-accent text-xs font-semibold hover:underline flex items-center gap-1">Inspect Details &rarr;</a>
+                </div>
+            </div>
+
+           
+            <div class="bp-card snap-start shrink-0 w-[300px] sm:w-[350px] bg-gamer-card border border-slate-800 rounded-2xl p-6 relative overflow-hidden group hover:border-slate-700 transition">
+                <div class="absolute top-0 right-0 bg-slate-800 text-slate-400 text-[10px] font-bold px-3 py-1 rounded-bl uppercase tracking-widest font-gamer">Concluded</div>
+                <div class="h-36 rounded-lg mb-4 overflow-hidden border border-gamer-accent/20">
+                <img src="images/mythiccreature.webp" alt="Season 6 Banner" class="w-full h-full object-cover">
+                </div>
+                <div class="text-xs text-slate-400 font-mono mb-1">MAY 2026</div>
+                <h3 class="text-2xl font-bold font-gamer mb-2 text-white group-hover:text-gamer-accent transition">Season 4: Mythical Creatures</h3>
+                <p class="text-slate-400 text-sm mb-6 line-clamp-3">The fan-favorite pass themed around legendary dragons, beasts, animated scale textures, and mythical gear sets.</p>
+                <div class="flex items-center justify-between pt-4 border-t border-slate-800/80">
+                    <span class="text-xs text-slate-400">30 Tiers</span>
+                    <a href="season4.html" class="text-gamer-accent text-xs font-semibold hover:underline flex items-center gap-1">Inspect Details &rarr;</a>
+                </div>
+            </div>
+
+            
+            <div class="bp-card snap-start shrink-0 w-[300px] sm:w-[350px] bg-gamer-card border border-slate-800 rounded-2xl p-6 relative overflow-hidden group hover:border-slate-700 transition">
+                <div class="absolute top-0 right-0 bg-slate-800 text-slate-400 text-[10px] font-bold px-3 py-1 rounded-bl uppercase tracking-widest font-gamer">Secret Lore</div>
+                <div class="h-36 rounded-lg mb-4 overflow-hidden border border-gamer-accent/20">
+                <img src="images/hellandheaven.webp" alt="Season 6 Banner" class="w-full h-full object-cover">
+                </div>
+                <div class="text-xs text-slate-400 font-mono mb-1">MARCH 2026</div>
+                <h3 class="text-2xl font-bold font-gamer mb-2 text-white group-hover:text-gamer-accent transition">Season 3: Hells & Heaven</h3>
+                <p class="text-slate-400 text-sm mb-6 line-clamp-3">Contained a massive secret and was the first battle pass to feature secret.</p>
+                <div class="flex items-center justify-between pt-4 border-t border-slate-800/80">
+                    <span class="text-xs text-slate-400">50 Tiers </span>
+                    <a href="season3.html" class="text-gamer-accent text-xs font-semibold hover:underline flex items-center gap-1">Inspect Details &rarr;</a>
+                </div>
+            </div>
+
+            
+            <div class="bp-card snap-start shrink-0 w-[300px] sm:w-[350px] bg-gamer-card border border-slate-800 rounded-2xl p-6 relative overflow-hidden group hover:border-slate-700 transition">
+                <div class="absolute top-0 right-0 bg-slate-800 text-slate-400 text-[10px] font-bold px-3 py-1 rounded-bl uppercase tracking-widest font-gamer">Concluded</div>
+                <div class="h-36 rounded-lg mb-4 overflow-hidden border border-gamer-accent/20">
+                <img src="images/Bp1.png" alt="Season 6 Banner" class="w-full h-full object-cover">
+                </div>
+                <div class="text-xs text-slate-400 font-mono mb-1">JAN 2026</div>
+                <h3 class="text-2xl font-bold font-gamer mb-2 text-white group-hover:text-gamer-accent transition">Season 2: Halloween BP</h3>
+                <p class="text-slate-400 text-sm mb-6 line-clamp-3">Another OG BP themed with haloween, this BP also holds fortune.</p>
+                <div class="flex items-center justify-between pt-4 border-t border-slate-800/80">
+                    <span class="text-xs text-slate-400">--- Tiers • OG </span>
+                    <a href="season2act.html" class="text-gamer-accent text-xs font-semibold hover:underline flex items-center gap-1">Inspect Details &rarr;</a>
+                </div>
+            </div>
+
+            
+            <div class="bp-card snap-start shrink-0 w-[300px] sm:w-[350px] bg-gamer-card border border-slate-800 rounded-2xl p-6 relative overflow-hidden group hover:border-slate-700 transition">
+                <div class="absolute top-0 right-0 bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[10px] font-bold px-3 py-1 rounded-bl uppercase tracking-widest font-gamer">OG Status</div>
+                <div class="h-36 rounded-lg mb-4 overflow-hidden border border-gamer-accent/20">
+                <img src="images/Bpog1.png" alt="Season 6 Banner" class="w-full h-full object-cover">
+                </div>
+                <div class="text-xs text-slate-400 font-mono mb-1">NOV 2025</div>
+                <h3 class="text-2xl font-bold font-gamer mb-2 text-white group-hover:text-gamer-accent transition">Season 1:</h3>
+                <p class="text-slate-400 text-sm mb-6 line-clamp-3">The launch battle pass where even early epic tier rewards hold massive OG rarity and prestige today.</p>
+                <div class="flex items-center justify-between pt-4 border-t border-slate-800/80">
+                    <span class="text-xs text-slate-400">--- Tiers • OG </span>
+                    <a href="season1.html" class="text-gamer-accent text-xs font-semibold hover:underline flex items-center gap-1">Inspect Details &rarr;</a>
+                </div>
+            </div>
+
+        </div>
+
+        
+
+    
+    <section id="weapons" class="py-20 px-6 max-w-7xl mx-auto border-t border-slate-800/80">
+        <div class="reveal-on-scroll flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
+            <div>
+                <span class="text-xs text-gamer-accent font-semibold tracking-widest uppercase bg-gamer-accent/10 px-3 py-1 rounded border border-gamer-accent/20">EVENTS</span>
+                <h2 class="text-3xl md:text-4xl font-bold font-gamer uppercase tracking-wide mt-3">Featured Events</h2>
+                <p class="text-slate-400 text-sm mt-1">Events Occured during the time. NOTE: as time progresses the value of mythics or the event itself drops as more and more players get to play</p>
+            </div>
+            
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <div class="reveal-on-scroll bg-gamer-card border border-slate-800/80 rounded-2xl p-6 hover:border-gamer-accent/50 transition duration-300 group">
+                <div class="h-40 bg-gradient-to-b from-slate-900 to-slate-950 rounded-xl mb-4 flex flex-col items-center justify-center border border-slate-800/80 text-slate-500 font-mono text-xs relative overflow-hidden">
+                    <svg class="w-16 h-16 text-slate-700 group-hover:text-gamer-accent transition duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    
+                    <img src="images/Oglimteds.webp" alt="Season 6 Banner" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-gamer-accent font-mono text-xs\'>[ Season 6: Halloween 2 ]</span>';">
+                </div>
+                <span class="text-[11px] text-gamer-accent font-semibold uppercase tracking-wider font-mono">EVENT </span>
+                <h3 class="text-xl font-bold font-gamer mt-1 mb-2 text-white group-hover:text-gamer-accent transition">Limiteds Event</h3>
+                <p class="text-slate-400 text-sm mb-4">One of the rarest latest events featuring epics, legendaries, mythics and the most valuable secrets</p>
+                <div class="space-y-2 pt-3 border-t border-slate-800/80 text-xs text-slate-400">
+                    <div class="flex justify-between"><span>Value</span><span class="text-slate-200 font-mono">Very High</span></div>
+                    <div class="w-full bg-slate-800 h-1 rounded-full"><div class="bg-gamer-accent h-1 rounded-full w-[100%]"></div></div>
+                </div>
+            </div>
+
+            <div class="reveal-on-scroll bg-gamer-card border border-slate-800/80 rounded-2xl p-6 hover:border-gamer-accent/50 transition duration-300 group">
+                <div class="h-40 bg-gradient-to-b from-slate-900 to-slate-950 rounded-xl mb-4 flex flex-col items-center justify-center border border-slate-800/80 text-slate-500 font-mono text-xs relative overflow-hidden">
+                    <svg class="w-16 h-16 text-slate-700 group-hover:text-gamer-accent transition duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    
+                    <img src="images/remix.webp" alt="Season 6 Banner" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-gamer-accent font-mono text-xs\'>[ Season 6: Halloween 2 ]</span>';">
+                </div>
+                <span class="text-[11px] text-gamer-accent font-semibold uppercase tracking-wider font-mono">EVENT </span>
+                <h3 class="text-xl font-bold font-gamer mt-1 mb-2 text-white group-hover:text-gamer-accent transition">Remix Event</h3>
+                <p class="text-slate-400 text-sm mb-4">Rare alternate colored versions of rare, epics, legendaries, mythics and secrets. Remix items are among the favorites of collectors</p>
+                <div class="space-y-2 pt-3 border-t border-slate-800/80 text-xs text-slate-400">
+                    <div class="flex justify-between"><span>Value</span><span class="text-slate-200 font-mono">High</span></div>
+                    <div class="w-full bg-slate-800 h-1 rounded-full"><div class="bg-gamer-accent h-1 rounded-full w-[85%]"></div></div>
+                </div>
+            </div>
+           
+            <div class="reveal-on-scroll bg-gamer-card border border-slate-800/80 rounded-2xl p-6 hover:border-gamer-accent/50 transition duration-300 group">
+                <div class="h-40 bg-gradient-to-b from-slate-900 to-slate-950 rounded-xl mb-4 flex flex-col items-center justify-center border border-slate-800/80 text-slate-500 font-mono text-xs relative overflow-hidden">
+                    <svg class="w-16 h-16 text-slate-700 group-hover:text-gamer-accent transition duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    
+                    <img src="images/summer.webp" alt="Season 6 Banner" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-gamer-accent font-mono text-xs\'>[ Season 6: Halloween 2 ]</span>';">
+                </div>
+                <span class="text-[11px] text-gamer-accent font-semibold uppercase tracking-wider font-mono">EVENT </span>
+                <h3 class="text-xl font-bold font-gamer mt-1 mb-2 text-white group-hover:text-gamer-accent transition">Summer Event</h3>
+                <p class="text-slate-400 text-sm mb-4">Released around summer, similar to easter event involves accumulation of golden balls and finally unlock the mythic</p>
+                <div class="space-y-2 pt-3 border-t border-slate-800/80 text-xs text-slate-400">
+                    <div class="flex justify-between"><span>Value</span><span class="text-slate-200 font-mono">LOW</span></div>
+                    <div class="w-full bg-slate-800 h-1 rounded-full"><div class="bg-gamer-accent h-1 rounded-full w-[20%]"></div></div>
+                </div>
+            </div>
+
+            <div class="reveal-on-scroll bg-gamer-card border border-slate-800/80 rounded-2xl p-6 hover:border-gamer-accent/50 transition duration-300 group">
+                <div class="h-40 bg-gradient-to-b from-slate-900 to-slate-950 rounded-xl mb-4 flex flex-col items-center justify-center border border-slate-800/80 text-slate-500 font-mono text-xs relative overflow-hidden">
+                    <svg class="w-16 h-16 text-slate-700 group-hover:text-gamer-accent transition duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    
+                    <img src="images/easter.webp" alt="Season 6 Banner" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-gamer-accent font-mono text-xs\'>[ Season 6: Halloween 2 ]</span>';">
+                </div>
+                <span class="text-[11px] text-gamer-accent font-semibold uppercase tracking-wider font-mono">EVENT </span>
+                <h3 class="text-xl font-bold font-gamer mt-1 mb-2 text-white group-hover:text-gamer-accent transition">Easter Event</h3>
+                <p class="text-slate-400 text-sm mb-4">Easter event involves accumulation of Easter eggs and finally unlock the mythic, The mythic is one of the strongest weepons</p>
+                <div class="space-y-2 pt-3 border-t border-slate-800/80 text-xs text-slate-400">
+                    <div class="flex justify-between"><span>Value</span><span class="text-slate-200 font-mono">High</span></div>
+                    <div class="w-full bg-slate-800 h-1 rounded-full"><div class="bg-gamer-accent h-1 rounded-full w-[80%]"></div></div>
+                </div>
+            </div>
+
+            <div class="reveal-on-scroll bg-gamer-card border border-slate-800/80 rounded-2xl p-6 hover:border-gamer-accent/50 transition duration-300 group">
+                <div class="h-40 bg-gradient-to-b from-slate-900 to-slate-950 rounded-xl mb-4 flex flex-col items-center justify-center border border-slate-800/80 text-slate-500 font-mono text-xs relative overflow-hidden">
+                    <svg class="w-16 h-16 text-slate-700 group-hover:text-gamer-accent transition duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    
+                    <img src="images/tksgiving.png" alt="Season 6 Banner" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-gamer-accent font-mono text-xs\'>[ Season 6: Halloween 2 ]</span>';">
+                </div>
+                <span class="text-[11px] text-gamer-accent font-semibold uppercase tracking-wider font-mono">EVENT </span>
+                <h3 class="text-xl font-bold font-gamer mt-1 mb-2 text-white group-hover:text-gamer-accent transition">Thanksgiving Event</h3>
+                <p class="text-slate-400 text-sm mb-4">After The Christmas event, thanksgiving was around the corner, it featured the OG fruit launcher, corn rifle,etc</p>
+                <div class="space-y-2 pt-3 border-t border-slate-800/80 text-xs text-slate-400">
+                    <div class="flex justify-between"><span>Value</span><span class="text-slate-200 font-mono">Very High</span></div>
+                    <div class="w-full bg-slate-800 h-1 rounded-full"><div class="bg-gamer-accent h-1 rounded-full w-[90%]"></div></div>
+                </div>
+            </div>
+
+            <div class="reveal-on-scroll bg-gamer-card border border-slate-800/80 rounded-2xl p-6 hover:border-gamer-accent/50 transition duration-300 group">
+                <div class="h-40 bg-gradient-to-b from-slate-900 to-slate-950 rounded-xl mb-4 flex flex-col items-center justify-center border border-slate-800/80 text-slate-500 font-mono text-xs relative overflow-hidden">
+                    <svg class="w-16 h-16 text-slate-700 group-hover:text-gamer-accent transition duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    
+                    <img src="images/christmSEVENT.png" alt="Season 6 Banner" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-gamer-accent font-mono text-xs\'>[ Season 6: Halloween 2 ]</span>';">
+                </div>
+                <span class="text-[11px] text-gamer-accent font-semibold uppercase tracking-wider font-mono">EVENT </span>
+                <h3 class="text-xl font-bold font-gamer mt-1 mb-2 text-white group-hover:text-gamer-accent transition">Christmas Event</h3>
+                <p class="text-slate-400 text-sm mb-4">This was the First ever event themed around Christmas featuring The OG mythic ELE</p>
+                <div class="space-y-2 pt-3 border-t border-slate-800/80 text-xs text-slate-400">
+                    <div class="flex justify-between"><span>Value</span><span class="text-slate-200 font-mono">Very High</span></div>
+                    <div class="w-full bg-slate-800 h-1 rounded-full"><div class="bg-gamer-accent h-1 rounded-full w-[95%]"></div></div>
+                </div>
+            </div>
+
+            
+        </div>
+    </section>
+
+    <!-- OG Archive Section -->
+    
+<section id="og" class="py-20 px-6 max-w-7xl mx-auto border-t border-slate-800/80 relative overflow-hidden">
+    
+    <!-- Canvas for NY2025 Fireworks Particle FX -->
+    <canvas id="fireworksCanvas" class="fixed inset-0 pointer-events-none z-50"></canvas>
+
+    
+    <style>
+        /* Christmas Lights Animation */
+        @keyframes twinkleLight {
+            0%, 100% { opacity: 1; filter: drop-shadow(0 0 8px currentColor); }
+            50% { opacity: 0.3; filter: drop-shadow(0 0 2px currentColor); }
+        }
+        .xmas-bulb {
+            width: 8px;
+            height: 12px;
+            border-radius: 50% 50% 40% 40%;
+            position: absolute;
+            top: -6px;
+            z-index: 20;
+            animation: twinkleLight 1.4s infinite ease-in-out;
+        }
+        .xmas-bulb::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 2px;
+            width: 4px;
+            height: 3px;
+            background: #334155;
+            border-radius: 1px;
+        }
+
+        /* Jumping Bunny Animations */
+        @keyframes bunnyHop1 {
+            0%, 100% { transform: translateY(0) scaleX(1); }
+            25% { transform: translateY(-16px) translateX(6px) rotate(-8deg); }
+            50% { transform: translateY(0) scaleX(1); }
+            75% { transform: translateY(-8px) translateX(-4px) rotate(4deg); }
+        }
+        @keyframes bunnyHop2 {
+            0%, 100% { transform: translateY(0) scaleX(-1); }
+            30% { transform: translateY(-22px) translateX(-8px) rotate(12deg); }
+            60% { transform: translateY(0) scaleX(-1); }
+            85% { transform: translateY(-10px) translateX(5px) rotate(-6deg); }
+        }
+        @keyframes bunnyHop3 {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            40% { transform: translateY(-18px) rotate(-15deg); }
+            80% { transform: translateY(0) rotate(0deg); }
+        }
+
+        .animated-bunny-1 { animation: bunnyHop1 2.2s infinite ease-in-out; }
+        .animated-bunny-2 { animation: bunnyHop2 2.8s infinite ease-in-out 0.4s; }
+        .animated-bunny-3 { animation: bunnyHop3 2.5s infinite ease-in-out 0.8s; }
+    </style>
+
+    
+    <div class="reveal-on-scroll flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-4">
+        <div>
+            <span class="text-xs text-purple-400 font-semibold tracking-widest uppercase bg-purple-500/10 px-3 py-1 rounded border border-purple-500/30">
+                Founders & Legacy
+            </span>
+            <h2 class="text-3xl md:text-4xl font-bold font-gamer uppercase tracking-wide mt-3 text-slate-100">
+                OG Archive
+            </h2>
+            <p class="text-slate-400 text-sm mt-1">
+                Early supporter items, rare legacy unlocks, and original community artifacts.
+            </p>
+        </div>
+
+        
+        <div class="flex items-center gap-3">
+            <button id="ogPrevBtn" class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:border-purple-500/50 hover:text-purple-400 transition active:scale-95 shadow-lg">
+                &larr;
+            </button>
+            <button id="ogNextBtn" class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:border-purple-500/50 hover:text-purple-400 transition active:scale-95 shadow-lg">
+                &rarr;
+            </button>
+        </div>
+    </div>
+
+    
+    <div class="relative w-full overflow-hidden rounded-2xl py-2">
+        <div id="ogTrack" class="flex gap-6 transition-transform duration-700 ease-in-out cursor-grab active:cursor-grabbing">
+            
+            <!-- Card 1: ELE (Mythic) - DECORATED WITH TWINKLING CHRISTMAS LIGHTS -->
+            <div class="min-w-[280px] sm:min-w-[320px] max-w-[320px] flex-shrink-0 bg-gamer-card/60 border border-slate-800 hover:border-purple-500/50 rounded-2xl p-6 flex flex-col justify-between text-center min-h-[380px] group transition duration-300 shadow-xl relative overflow-visible">
+                
+                
+                <div class="absolute -top-1 left-4 right-4 h-3 pointer-events-none z-20 flex justify-between items-center">
+                    <div class="xmas-bulb bg-red-500 text-red-500 left-[5%]" style="animation-delay: 0s;"></div>
+                    <div class="xmas-bulb bg-green-400 text-green-400 left-[20%]" style="animation-delay: 0.3s;"></div>
+                    <div class="xmas-bulb bg-yellow-400 text-yellow-400 left-[35%]" style="animation-delay: 0.6s;"></div>
+                    <div class="xmas-bulb bg-blue-400 text-blue-400 left-[50%]" style="animation-delay: 0.9s;"></div>
+                    <div class="xmas-bulb bg-red-500 text-red-500 left-[65%]" style="animation-delay: 0.2s;"></div>
+                    <div class="xmas-bulb bg-green-400 text-green-400 left-[80%]" style="animation-delay: 0.5s;"></div>
+                    <div class="xmas-bulb bg-yellow-400 text-yellow-400 left-[95%]" style="animation-delay: 0.8s;"></div>
+                    <!-- Hanging Wire -->
+                    <svg class="w-full h-4 absolute top-0 left-0" viewBox="0 0 100 20" preserveAspectRatio="none">
+                        <path d="M0,2 Q15,14 30,2 Q45,14 60,2 Q75,14 90,2 Q95,8 100,2" fill="none" stroke="#475569" stroke-width="1.2"/>
+                    </svg>
+                </div>
+
+                <div class="h-44 w-full rounded-xl overflow-hidden border border-slate-800/80 bg-slate-950 flex items-center justify-center p-2 relative mt-2">
+                    <img src="images/ele.png" alt="ELE" class="w-full h-full object-contain transition duration-500 group-hover:scale-105" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-purple-400 font-mono text-xs\'>[ ELE Render ]</span>';">
+                </div>
+                <div class="mt-4">
+                    <h3 class="text-xl font-bold font-gamer text-white group-hover:text-purple-400 transition">ELE</h3>
+                    <p class="text-slate-500 text-[11px] font-mono uppercase tracking-wider mt-0.5">Relic Item</p>
+                </div>
+                <div class="mt-3 pt-3 border-t border-slate-800/80 space-y-1.5 text-xs text-slate-400 text-left">
+                    <div class="flex items-center justify-between font-mono text-[11px]">
+                        <span class="text-slate-500">Rarity Tier:</span>
+                        <span class="text-purple-400 font-semibold">Mythic</span>
+                    </div>
+                    <div class="flex items-center justify-between font-mono text-[11px]">
+                        <span class="text-slate-500">Obtained by:</span>
+                        <span class="text-amber-400 font-semibold">Christmas Event</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 leading-relaxed pt-1 border-t border-slate-800/40">
+                        This Highly Valuable weapon is a class of its own, the one and only OG mythic
+                    </p>
+                </div>
+            </div>
+
+           
+            <div class="min-w-[280px] sm:min-w-[320px] max-w-[320px] flex-shrink-0 bg-gamer-card/60 border border-slate-800 hover:border-red-500/50 rounded-2xl p-6 flex flex-col justify-between text-center min-h-[380px] group transition duration-300 shadow-xl relative overflow-hidden">
+                <div class="h-44 w-full rounded-xl overflow-hidden border border-slate-800/80 bg-slate-950 flex items-center justify-center p-2">
+                    <img src="images/season1/1.png" alt="DragonFire" class="w-full h-full object-contain transition duration-500 group-hover:scale-105" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-red-400 font-mono text-xs\'>[ DragonFire Render ]</span>';">
+                </div>
+                <div class="mt-4">
+                    <h3 class="text-xl font-bold font-gamer text-white group-hover:text-red-400 transition">DragonFire</h3>
+                    <p class="text-slate-500 text-[11px] font-mono uppercase tracking-wider mt-0.5">Relic Item</p>
+                </div>
+                <div class="mt-3 pt-3 border-t border-slate-800/80 space-y-1.5 text-xs text-slate-400 text-left">
+                    <div class="flex items-center justify-between font-mono text-[11px]">
+                        <span class="text-slate-500">Rarity Tier:</span>
+                        <span class="text-red-400 font-semibold">Legendary</span>
+                    </div>
+                    <div class="flex items-center justify-between font-mono text-[11px]">
+                        <span class="text-slate-500">Obtained by:</span>
+                        <span class="text-amber-400 font-semibold">Battle Pass</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 leading-relaxed pt-1 border-t border-slate-800/40">
+                        The Classic Legendary, 999 ammo, best arcade weapon at that time.
+                    </p>
+                </div>
+            </div>
+
+            
+            <div class="min-w-[280px] sm:min-w-[320px] max-w-[320px] flex-shrink-0 bg-gamer-card/60 border border-slate-800 hover:border-red-500/50 rounded-2xl p-6 flex flex-col justify-between text-center min-h-[380px] group transition duration-300 shadow-xl relative overflow-hidden">
+                <div class="h-44 w-full rounded-xl overflow-hidden border border-slate-800/80 bg-slate-950 flex items-center justify-center p-2">
+                    <img src="images/season1/2.png" alt="Winged AK" class="w-full h-full object-contain transition duration-500 group-hover:scale-105" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-red-400 font-mono text-xs\'>[ Winged AK Render ]</span>';">
+                </div>
+                <div class="mt-4">
+                    <h3 class="text-xl font-bold font-gamer text-white group-hover:text-red-400 transition">Winged AK</h3>
+                    <p class="text-slate-500 text-[11px] font-mono uppercase tracking-wider mt-0.5">Relic Item</p>
+                </div>
+                <div class="mt-3 pt-3 border-t border-slate-800/80 space-y-1.5 text-xs text-slate-400 text-left">
+                    <div class="flex items-center justify-between font-mono text-[11px]">
+                        <span class="text-slate-500">Rarity Tier:</span>
+                        <span class="text-red-400 font-semibold">Legendary</span>
+                    </div>
+                    <div class="flex items-center justify-between font-mono text-[11px]">
+                        <span class="text-slate-500">Obtained by:</span>
+                        <span class="text-amber-400 font-semibold">Battle Pass</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 leading-relaxed pt-1 border-t border-slate-800/40">
+                        The Classic Legendary, supports flight mechanics by holding jump.
+                    </p>
+                </div>
+            </div>
+
+            
+            <div class="min-w-[280px] sm:min-w-[320px] max-w-[320px] flex-shrink-0 bg-gamer-card/60 border border-slate-800 hover:border-amber-500/50 rounded-2xl p-6 flex flex-col justify-between text-center min-h-[380px] group transition duration-300 shadow-xl relative overflow-hidden">
+                <div class="h-44 w-full rounded-xl overflow-hidden border border-slate-800/80 bg-slate-950 flex items-center justify-center p-2">
+                    <img src="images/season2/4.png" alt="Dual Kamas" class="w-full h-full object-contain transition duration-500 group-hover:scale-105" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-amber-400 font-mono text-xs\'>[ Dual Kamas Render ]</span>';">
+                </div>
+                <div class="mt-4">
+                    <h3 class="text-xl font-bold font-gamer text-white group-hover:text-amber-400 transition">Dual Kamas</h3>
+                    <p class="text-slate-500 text-[11px] font-mono uppercase tracking-wider mt-0.5">Relic Item</p>
+                </div>
+                <div class="mt-3 pt-3 border-t border-slate-800/80 space-y-1.5 text-xs text-slate-400 text-left">
+                    <div class="flex items-center justify-between font-mono text-[11px]">
+                        <span class="text-slate-500">Rarity Tier:</span>
+                        <span class="text-red-400 font-semibold">Legendary</span>
+                    </div>
+                    <div class="flex items-center justify-between font-mono text-[11px]">
+                        <span class="text-slate-500">Obtained by:</span>
+                        <span class="text-amber-400 font-semibold">Battle Pass</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 leading-relaxed pt-1 border-t border-slate-800/40">
+                        One of the top melees, valuable and excellent at close-range gameplay.
+                    </p>
+                </div>
+            </div>
+
+            
+            <div class="min-w-[280px] sm:min-w-[320px] max-w-[320px] flex-shrink-0 bg-gamer-card/60 border border-slate-800 hover:border-orange-500/50 rounded-2xl p-6 flex flex-col justify-between text-center min-h-[380px] group transition duration-300 shadow-xl relative overflow-hidden">
+                <div class="h-44 w-full rounded-xl overflow-hidden border border-slate-800/80 bg-slate-900/60 flex items-center justify-center p-2">
+                    <img src="images/season2/6.png" alt="Pumpkin OG" class="w-full h-full object-contain transition duration-500 group-hover:scale-105" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-orange-400 font-mono text-xs\'>[ Pumpkin OG Render ]</span>';">
+                </div>
+                <div class="mt-4">
+                    <h3 class="text-xl font-bold font-gamer text-white group-hover:text-orange-400 transition">Pumpkin OG</h3>
+                    <p class="text-slate-500 text-[11px] font-mono uppercase tracking-wider mt-0.5">Relic Item</p>
+                </div>
+                <div class="mt-3 pt-3 border-t border-slate-800/80 space-y-1.5 text-xs text-slate-400 text-left">
+                    <div class="flex items-center justify-between font-mono text-[11px]">
+                        <span class="text-slate-500">Rarity Tier:</span>
+                        <span class="text-red-400 font-semibold">Legendary</span>
+                    </div>
+                    <div class="flex items-center justify-between font-mono text-[11px]">
+                        <span class="text-slate-500">Obtained by:</span>
+                        <span class="text-amber-400 font-semibold">Battle Pass</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 leading-relaxed pt-1 border-t border-slate-800/40">
+                        Season 2 RPG-style launcher, highly favored by explosive users.
+                    </p>
+                </div>
+            </div>
+
+            
+            <div id="ny2025Card" class="min-w-[280px] sm:min-w-[320px] max-w-[320px] flex-shrink-0 bg-gradient-to-b from-amber-500/10 via-gamer-card/60 to-purple-500/10 border border-amber-500/40 hover:border-amber-400 rounded-2xl p-6 flex flex-col justify-between text-center min-h-[380px] group transition duration-300 shadow-[0_0_20px_rgba(245,158,11,0.15)] relative overflow-hidden cursor-pointer">
+                <div class="absolute top-3 right-3 bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[9px] font-mono px-2 py-0.5 rounded-full uppercase tracking-wider animate-pulse">
+                    
+                </div>
+                <div class="h-44 w-full rounded-xl overflow-hidden border border-amber-500/30 bg-slate-950 flex items-center justify-center p-2 relative">
+                    <img src="images/ny.png" alt="Ny2025" class="w-full h-full object-contain transition duration-500 group-hover:scale-110" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-amber-400 font-mono text-xs\'>[ Ny2025 Render ]</span>';">
+                </div>
+                <div class="mt-4">
+                    <h3 class="text-xl font-bold font-gamer text-amber-300 group-hover:text-amber-200 transition">Ny2025</h3>
+                    <p class="text-amber-400/80 text-[11px] font-mono uppercase tracking-wider mt-0.5">Special New Year Relic</p>
+                </div>
+                <div class="mt-3 pt-3 border-t border-slate-800/80 space-y-1.5 text-xs text-slate-400 text-left">
+                    <div class="flex items-center justify-between font-mono text-[11px]">
+                        <span class="text-slate-500">Rarity Tier:</span>
+                        <span class="text-red-400 font-semibold">Legendary</span>
+                    </div>
+                    <div class="flex items-center justify-between font-mono text-[11px]">
+                        <span class="text-slate-500">Obtained by:</span>
+                        <span class="text-amber-400 font-semibold">New Year Bundle</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed pt-1 border-t border-slate-800/40">
+                        Launched during New Year. Shoot high into the air to trigger festive fireworks!
+                    </p>
+                </div>
+            </div>
+
+            
+            <div class="min-w-[280px] sm:min-w-[320px] max-w-[320px] flex-shrink-0 bg-gamer-card/60 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-6 flex flex-col justify-between text-center min-h-[380px] group transition duration-300 shadow-xl relative overflow-hidden">
+                <div class="h-44 w-full rounded-xl overflow-hidden border border-slate-800/80 bg-slate-950 flex items-center justify-center p-2">
+                    <img src="images/fruit.png" alt="Fruit Launcher" class="w-full h-full object-contain transition duration-500 group-hover:scale-105" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-emerald-400 font-mono text-xs\'>[ Fruit Launcher Render ]</span>';">
+                </div>
+                <div class="mt-4">
+                    <h3 class="text-xl font-bold font-gamer text-white group-hover:text-emerald-400 transition">Fruit Launcher</h3>
+                    <p class="text-slate-500 text-[11px] font-mono uppercase tracking-wider mt-0.5">Relic Item</p>
+                </div>
+                <div class="mt-3 pt-3 border-t border-slate-800/80 space-y-1.5 text-xs text-slate-400 text-left">
+                    <div class="flex items-center justify-between font-mono text-[11px]">
+                        <span class="text-slate-500">Rarity Tier:</span>
+                        <span class="text-red-400 font-semibold">Legendary</span>
+                    </div>
+                    <div class="flex items-center justify-between font-mono text-[11px]">
+                        <span class="text-slate-500">Obtained by:</span>
+                        <span class="text-amber-400 font-semibold">Thanksgiving Event</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 leading-relaxed pt-1 border-t border-slate-800/40">
+                        Launches explosive fruits! A hallmark of the Golden Era of weapons.
+                    </p>
+                </div>
+            </div>
+
+            <div class="min-w-[280px] sm:min-w-[320px] max-w-[320px] flex-shrink-0 bg-gamer-card/60 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-6 flex flex-col justify-between text-center min-h-[380px] group transition duration-300 shadow-xl relative overflow-hidden">
+                <div class="h-44 w-full rounded-xl overflow-hidden border border-slate-800/80 bg-slate-950 flex items-center justify-center p-2">
+                    <img src="images/crossbow.png" alt="Fruit Launcher" class="w-full h-full object-contain transition duration-500 group-hover:scale-105" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-emerald-400 font-mono text-xs\'>[ Fruit Launcher Render ]</span>';">
+                </div>
+                <div class="mt-4">
+                    <h3 class="text-xl font-bold font-gamer text-white group-hover:text-emerald-400 transition">Draconic Crossbow</h3>
+                    <p class="text-slate-500 text-[11px] font-mono uppercase tracking-wider mt-0.5">Relic Item</p>
+                </div>
+                <div class="mt-3 pt-3 border-t border-slate-800/80 space-y-1.5 text-xs text-slate-400 text-left">
+                    <div class="flex items-center justify-between font-mono text-[11px]">
+                        <span class="text-slate-500">Rarity Tier:</span>
+                        <span class="text-red-400 font-semibold">Legendary</span>
+                    </div>
+                    <div class="flex items-center justify-between font-mono text-[11px]">
+                        <span class="text-slate-500">Obtained by:</span>
+                        <span class="text-amber-400 font-semibold">Haloween Bundle</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 leading-relaxed pt-1 border-t border-slate-800/40">
+                        Draconic has fast paced reload, good at arcade
+                    </p>
+                </div>
+            </div>
+
+            
+            <div class="min-w-[280px] sm:min-w-[320px] max-w-[320px] flex-shrink-0 bg-gamer-card/60 border border-pink-500/30 hover:border-pink-400 rounded-2xl p-6 flex flex-col justify-between text-center min-h-[380px] group transition duration-300 shadow-xl relative overflow-visible">
+                
+                <!-- Jumping Bunny 1 (Top Right Corner) -->
+                <div class="absolute -top-4 -right-2 text-xl pointer-events-none animated-bunny-1 z-20">
+                    &#128007;
+                </div>
+                <!-- Jumping Bunny 2 (Bottom Left Corner) -->
+                <div class="absolute -bottom-3 -left-2 text-lg pointer-events-none animated-bunny-2 z-20">
+                    &#128048;
+                </div>
+                <!-- Jumping Bunny 3 (Top Left Border) -->
+                <div class="absolute -top-5 left-8 text-base pointer-events-none animated-bunny-3 z-20">
+                    &#128007;
+                </div>
+
+                <div class="h-44 w-full rounded-xl overflow-hidden border border-slate-800/80 bg-slate-950 flex items-center justify-center p-2 relative">
+                    <img src="images/Basket.png" alt="Easter Explosive Basket" class="w-full h-full object-contain transition duration-500 group-hover:scale-105" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-pink-400 font-mono text-xs\'>[ Easter Basket Render ]</span>';">
+                </div>
+                <div class="mt-4">
+                    <h3 class="text-xl font-bold font-gamer text-white group-hover:text-pink-400 transition">Easter Explosive Basket</h3>
+                    <p class="text-slate-500 text-[11px] font-mono uppercase tracking-wider mt-0.5">Relic Item</p>
+                </div>
+                <div class="mt-3 pt-3 border-t border-slate-800/80 space-y-1.5 text-xs text-slate-400 text-left">
+                    <div class="flex items-center justify-between font-mono text-[11px]">
+                        <span class="text-slate-500">Rarity Tier:</span>
+                        <span class="text-red-400 font-semibold">Legendary</span>
+                    </div>
+                    <div class="flex items-center justify-between font-mono text-[11px]">
+                        <span class="text-slate-500">Obtained by:</span>
+                        <span class="text-amber-400 font-semibold">----</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 leading-relaxed pt-1 border-t border-slate-800/40">
+                        Fun, explosive, highly valuable item that eliminates enemies on impact.
+                    </p>
+                </div>
+            </div>
+
+            
+            <div class="min-w-[280px] sm:min-w-[320px] max-w-[320px] flex-shrink-0 bg-gamer-card/60 border border-slate-800 hover:border-purple-500/50 rounded-2xl p-6 flex flex-col justify-between text-center min-h-[380px] group transition duration-300 shadow-xl relative overflow-hidden">
+                <div class="h-44 w-full rounded-xl overflow-hidden border border-slate-800/80 bg-slate-950 flex items-center justify-center p-2">
+                    <img src="images/season2/5.png" alt="ELE Melee" class="w-full h-full object-contain transition duration-500 group-hover:scale-105" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-purple-400 font-mono text-xs\'>[ Melee ELE Render ]</span>';">
+                </div>
+                <div class="mt-4">
+                    <h3 class="text-xl font-bold font-gamer text-white group-hover:text-purple-400 transition">Bonfire Scythe</h3>
+                    <p class="text-slate-500 text-[11px] font-mono uppercase tracking-wider mt-0.5">Relic Item</p>
+                </div>
+                <div class="mt-3 pt-3 border-t border-slate-800/80 space-y-1.5 text-xs text-slate-400 text-left">
+                    <div class="flex items-center justify-between font-mono text-[11px]">
+                        <span class="text-slate-500">Rarity Tier:</span>
+                        <span class="text-purple-400 font-semibold">Epic</span>
+                    </div>
+                    <div class="flex items-center justify-between text-[11px] font-mono">
+                        <span class="text-slate-500">Obtained by:</span>
+                        <span class="text-amber-400 font-semibold">Battle Pass</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 leading-relaxed pt-1 border-t border-slate-800/40">
+                        A unique melee variant offered during the Season 2 battle pass series.
+                    </p>
+                </div>
+            </div>
+
+            
+            <div class="min-w-[280px] sm:min-w-[320px] max-w-[320px] flex-shrink-0 bg-gamer-card/60 border border-slate-800 hover:border-cyan-500/50 rounded-2xl p-6 flex flex-col justify-between text-center min-h-[380px] group transition duration-300 shadow-xl relative overflow-hidden">
+                <div class="h-44 w-full rounded-xl overflow-hidden border border-slate-800/80 bg-slate-950 flex items-center justify-center p-2">
+                    <img src="images/season1/3.png" alt="Nerf Blaster" class="w-full h-full object-contain transition duration-500 group-hover:scale-105" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-cyan-400 font-mono text-xs\'>[ Nerf Blaster Render ]</span>';">
+                </div>
+                <div class="mt-4">
+                    <h3 class="text-xl font-bold font-gamer text-white group-hover:text-cyan-400 transition">Nerf Blaster</h3>
+                    <p class="text-slate-500 text-[11px] font-mono uppercase tracking-wider mt-0.5">Relic Item</p>
+                </div>
+                <div class="mt-3 pt-3 border-t border-slate-800/80 space-y-1.5 text-xs text-slate-400 text-left">
+                    <div class="flex items-center justify-between font-mono text-[11px]">
+                        <span class="text-slate-500">Rarity Tier:</span>
+                        <span class="text-purple-400 font-semibold">Epic</span>
+                    </div>
+                    <div class="flex items-center justify-between text-[11px] font-mono">
+                        <span class="text-slate-500">Obtained by:</span>
+                        <span class="text-amber-400 font-semibold">Battle Pass</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 leading-relaxed pt-1 border-t border-slate-800/40">
+                        Nerf-styled gun from the early golden era of Hypershot weapon designs.
+                    </p>
+                </div>
+            </div>
+
+            <div class="min-w-[280px] sm:min-w-[320px] max-w-[320px] flex-shrink-0 bg-gamer-card/60 border border-slate-800 hover:border-cyan-500/50 rounded-2xl p-6 flex flex-col justify-between text-center min-h-[380px] group transition duration-300 shadow-xl relative overflow-hidden">
+                <div class="h-44 w-full rounded-xl overflow-hidden border border-slate-800/80 bg-slate-950 flex items-center justify-center p-2">
+                    <img src="images/corn.png" alt="Nerf Blaster" class="w-full h-full object-contain transition duration-500 group-hover:scale-105" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-cyan-400 font-mono text-xs\'>[ Nerf Blaster Render ]</span>';">
+                </div>
+                <div class="mt-4">
+                    <h3 class="text-xl font-bold font-gamer text-white group-hover:text-cyan-400 transition">Corn Rifle</h3>
+                    <p class="text-slate-500 text-[11px] font-mono uppercase tracking-wider mt-0.5">Relic Item</p>
+                </div>
+                <div class="mt-3 pt-3 border-t border-slate-800/80 space-y-1.5 text-xs text-slate-400 text-left">
+                    <div class="flex items-center justify-between font-mono text-[11px]">
+                        <span class="text-slate-500">Rarity Tier:</span>
+                        <span class="text-purple-400 font-semibold">Epic</span>
+                    </div>
+                    <div class="flex items-center justify-between text-[11px] font-mono">
+                        <span class="text-slate-500">Obtained by:</span>
+                        <span class="text-amber-400 font-semibold">Thanksgiving</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 leading-relaxed pt-1 border-t border-slate-800/40">
+                        Most valuable epic by far, good at gameplay and best for duels after eb
+                    </p>
+                </div>
+            </div>
+
+            <div class="min-w-[280px] sm:min-w-[320px] max-w-[320px] flex-shrink-0 bg-gamer-card/60 border border-slate-800 hover:border-cyan-500/50 rounded-2xl p-6 flex flex-col justify-between text-center min-h-[380px] group transition duration-300 shadow-xl relative overflow-hidden">
+                <div class="h-44 w-full rounded-xl overflow-hidden border border-slate-800/80 bg-slate-950 flex items-center justify-center p-2">
+                    <img src="images/fial.png" alt="Nerf Blaster" class="w-full h-full object-contain transition duration-500 group-hover:scale-105" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-cyan-400 font-mono text-xs\'>[ Nerf Blaster Render ]</span>';">
+                </div>
+                <div class="mt-4">
+                    <h3 class="text-xl font-bold font-gamer text-white group-hover:text-cyan-400 transition">Pumpkin Fail</h3>
+                    <p class="text-slate-500 text-[11px] font-mono uppercase tracking-wider mt-0.5">Relic Item</p>
+                </div>
+                <div class="mt-3 pt-3 border-t border-slate-800/80 space-y-1.5 text-xs text-slate-400 text-left">
+                    <div class="flex items-center justify-between font-mono text-[11px]">
+                        <span class="text-slate-500">Rarity Tier:</span>
+                        <span class="text-purple-400 font-semibold">Epic</span>
+                    </div>
+                    <div class="flex items-center justify-between text-[11px] font-mono">
+                        <span class="text-slate-500">Obtained by:</span>
+                        <span class="text-amber-400 font-semibold">Bp</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 leading-relaxed pt-1 border-t border-slate-800/40">
+                        Another melee, Good haloween meleee
+                    </p>
+                </div>
+            </div>
+
+            
+            <div class="min-w-[280px] sm:min-w-[320px] max-w-[320px] flex-shrink-0 bg-gamer-card/60 border border-slate-800 hover:border-blue-500/50 rounded-2xl p-6 flex flex-col justify-between text-center min-h-[380px] group transition duration-300 shadow-xl relative overflow-hidden">
+                <div class="h-44 w-full rounded-xl overflow-hidden border border-slate-800/80 bg-slate-950 flex items-center justify-center p-2">
+                    <img src="images/pumkin.png" alt="Pumpkin Pie" class="w-full h-full object-contain transition duration-500 group-hover:scale-105" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-blue-400 font-mono text-xs\'>[ Pumpkin Pie Render ]</span>';">
+                </div>
+                <div class="mt-4">
+                    <h3 class="text-xl font-bold font-gamer text-white group-hover:text-blue-400 transition">Pumpkin Pie</h3>
+                    <p class="text-slate-500 text-[11px] font-mono uppercase tracking-wider mt-0.5">Relic Item</p>
+                </div>
+                <div class="mt-3 pt-3 border-t border-slate-800/80 space-y-1.5 text-xs text-slate-400 text-left">
+                    <div class="flex items-center justify-between font-mono text-[11px]">
+                        <span class="text-slate-500">Rarity Tier:</span>
+                        <span class="text-blue-400 font-semibold">Rare</span>
+                    </div>
+                    <div class="flex items-center justify-between font-mono text-[11px]">
+                        <span class="text-slate-500">Obtained by:</span>
+                        <span class="text-amber-400 font-semibold">Thanksgiving Event</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 leading-relaxed pt-1 border-t border-slate-800/40">
+                        Festive throwable relic item from the Thanksgiving special event.
+                    </p>
+                </div>
+            </div>
+
+            <div class="min-w-[280px] sm:min-w-[320px] max-w-[320px] flex-shrink-0 bg-gamer-card/60 border border-slate-800 hover:border-blue-500/50 rounded-2xl p-6 flex flex-col justify-between text-center min-h-[380px] group transition duration-300 shadow-xl relative overflow-hidden">
+                <div class="h-44 w-full rounded-xl overflow-hidden border border-slate-800/80 bg-slate-950 flex items-center justify-center p-2">
+                    <img src="images/skele.png" alt="Pumpkin Pie" class="w-full h-full object-contain transition duration-500 group-hover:scale-105" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-blue-400 font-mono text-xs\'>[ Pumpkin Pie Render ]</span>';">
+                </div>
+                <div class="mt-4">
+                    <h3 class="text-xl font-bold font-gamer text-white group-hover:text-blue-400 transition">Skeleton Dragon</h3>
+                    <p class="text-slate-500 text-[11px] font-mono uppercase tracking-wider mt-0.5">Relic Item</p>
+                </div>
+                <div class="mt-3 pt-3 border-t border-slate-800/80 space-y-1.5 text-xs text-slate-400 text-left">
+                    <div class="flex items-center justify-between font-mono text-[11px]">
+                        <span class="text-slate-500">Rarity Tier:</span>
+                        <span class="text-blue-400 font-semibold">Rare</span>
+                    </div>
+                    <div class="flex items-center justify-between font-mono text-[11px]">
+                        <span class="text-slate-500">Obtained by:</span>
+                        <span class="text-amber-400 font-semibold">Haloween Bp</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 leading-relaxed pt-1 border-t border-slate-800/40">
+                        Skeleton dragon a rare weapon, good for holding stable value
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    
+    <div id="ogDots" class="flex justify-center items-center gap-2 mt-6"></div>
+</section>
+
+<!-- Carousel & Fireworks Script -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const track = document.getElementById("ogTrack");
+    const prevBtn = document.getElementById("ogPrevBtn");
+    const nextBtn = document.getElementById("ogNextBtn");
+    const dotsContainer = document.getElementById("ogDots");
+    const nyCard = document.getElementById("ny2025Card");
+
+    if (!track) return;
+
+    const cards = Array.from(track.children);
+    let currentIndex = 0;
+    let autoScrollTimer = null;
+    const intervalTime = 5000; 
+
+    function getCardWidth() {
+        if (!cards[0]) return 344;
+        return cards[0].offsetWidth + 24; 
+    }
+
+    function getMaxIndex() {
+        const visibleCards = Math.floor(track.parentElement.offsetWidth / getCardWidth());
+        return Math.max(0, cards.length - visibleCards);
+    }
+
+    function buildDots() {
+        dotsContainer.innerHTML = "";
+        const totalDots = getMaxIndex() + 1;
+        for (let i = 0; i < totalDots; i++) {
+            const dot = document.createElement("button");
+            dot.className = `h-2 rounded-full transition-all duration-300 ${i === currentIndex ? 'w-6 bg-purple-500' : 'w-2 bg-slate-800 hover:bg-slate-700'}`;
+            dot.addEventListener("click", () => {
+                currentIndex = i;
+                updateCarousel();
+                resetAutoScroll();
+            });
+            dotsContainer.appendChild(dot);
+        }
+    }
+
+    function updateCarousel() {
+        const maxIdx = getMaxIndex();
+        if (currentIndex > maxIdx) currentIndex = 0;
+        if (currentIndex < 0) currentIndex = maxIdx;
+
+        const offset = currentIndex * getCardWidth();
+        track.style.transform = `translateX(-${offset}px)`;
+
+        const dots = Array.from(dotsContainer.children);
+        dots.forEach((dot, idx) => {
+            if (idx === currentIndex) {
+                dot.className = "h-2 w-6 rounded-full bg-purple-500 transition-all duration-300";
+            } else {
+                dot.className = "h-2 w-2 rounded-full bg-slate-800 hover:bg-slate-700 transition-all duration-300";
+            }
+        });
+    }
+
+    function nextSlide() {
+        const maxIdx = getMaxIndex();
+        currentIndex = (currentIndex >= maxIdx) ? 0 : currentIndex + 1;
+        updateCarousel();
+    }
+
+    function prevSlide() {
+        const maxIdx = getMaxIndex();
+        currentIndex = (currentIndex <= 0) ? maxIdx : currentIndex - 1;
+        updateCarousel();
+    }
+
+    function startAutoScroll() {
+        stopAutoScroll();
+        autoScrollTimer = setInterval(nextSlide, intervalTime);
+    }
+
+    function stopAutoScroll() {
+        if (autoScrollTimer) clearInterval(autoScrollTimer);
+    }
+
+    function resetAutoScroll() {
+        startAutoScroll();
+    }
+
+    nextBtn.addEventListener("click", () => { nextSlide(); resetAutoScroll(); });
+    prevBtn.addEventListener("click", () => { prevSlide(); resetAutoScroll(); });
+
+    track.parentElement.addEventListener("mouseenter", stopAutoScroll);
+    track.parentElement.addEventListener("mouseleave", startAutoScroll);
+
+    window.addEventListener("resize", () => {
+        buildDots();
+        updateCarousel();
+    });
+
+    buildDots();
+    updateCarousel();
+    startAutoScroll();
+
+    // ----------------------------------------------------
+    // NEW YEAR FIREWORKS PARTICLES ENGINE
+    // ----------------------------------------------------
+    const canvas = document.getElementById("fireworksCanvas");
+    const ctx = canvas.getContext("2d");
+    let particles = [];
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    class FireworkParticle {
+        constructor(x, y, color) {
+            this.x = x;
+            this.y = y;
+            this.color = color;
+            const angle = Math.random() * Math.PI * 2;
+            const speed = Math.random() * 8 + 2;
+            this.vx = Math.cos(angle) * speed;
+            this.vy = Math.sin(angle) * speed;
+            this.gravity = 0.12;
+            this.alpha = 1;
+            this.decay = Math.random() * 0.02 + 0.015;
+            this.size = Math.random() * 3 + 2;
+        }
+
+        update() {
+            this.vx *= 0.98;
+            this.vy *= 0.98;
+            this.vy += this.gravity;
+            this.x += this.vx;
+            this.y += this.vy;
+            this.alpha -= this.decay;
+        }
+
+        draw() {
+            ctx.save();
+            ctx.globalAlpha = Math.max(0, this.alpha);
+            ctx.fillStyle = this.color;
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = this.color;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+        }
+    }
+
+    function launchFireworksBurst(startX, startY) {
+        const colors = ["#f59e0b", "#ef4444", "#10b981", "#06b6d4", "#a855f7", "#ec4899", "#facc15"];
+        for (let burst = 0; burst < 3; burst++) {
+            setTimeout(() => {
+                const burstX = startX + (Math.random() * 200 - 100);
+                const burstY = startY + (Math.random() * 150 - 75);
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                for (let i = 0; i < 60; i++) {
+                    particles.push(new FireworkParticle(burstX, burstY, color));
+                }
+            }, burst * 200);
+        }
+    }
+
+    function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = particles.length - 1; i >= 0; i--) {
+            particles[i].update();
+            particles[i].draw();
+            if (particles[i].alpha <= 0) {
+                particles.splice(i, 1);
+            }
+        }
+        requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    if (nyCard) {
+        nyCard.addEventListener("click", (e) => {
+            const rect = nyCard.getBoundingClientRect();
+            const clickX = rect.left + rect.width / 2;
+            const clickY = rect.top + rect.height / 2;
+            launchFireworksBurst(clickX, clickY);
+        });
+    }
+});
+</script>
+
+    <footer class="border-t border-slate-800/80 py-8 px-6 text-center text-xs text-slate-500 font-mono">
+        <p>HYPERSHOT.HISTORY &copy; 2026 ARCHIVES & COMMUNITY LOG. ALL RIGHTS RESERVED.</p>
+        <p>Creator Of This Website - Field Outlawz</p>
+        <p>Discord User- not_halo</p>
+        <p>All images , videos are reserved under Hypershot and none are related to this website creator</p>
+        <p>Hope yall enjoyed :></p>
+        <p>Easter Eggs hidden</p>
+    </footer>
+
+    <script>
+        
+        const revealElements = document.querySelectorAll(".reveal-on-scroll");
+
+        const observerOptions = {
+            root: null,
+            threshold: 0.12,
+            rootMargin: "0px 0px -40px 0px"
+        };
+
+        const revealOnScrollObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        revealElements.forEach(element => {
+            revealOnScrollObserver.observe(element);
+        });
+
+        
+        const carousel = document.getElementById("carouselContainer");
+        const btnLeft = document.getElementById("slideLeft");
+        const btnRight = document.getElementById("slideRight");
+        const scrollProgressBar = document.getElementById("scrollProgressBar");
+        const scrollIndicatorText = document.getElementById("scrollIndicatorText");
+
+        // Click Controls
+        const cardWidth = 370; 
+
+        btnLeft.addEventListener("click", () => {
+            carousel.scrollBy({ left: -cardWidth, behavior: "smooth" });
+        });
+
+        btnRight.addEventListener("click", () => {
+            carousel.scrollBy({ left: cardWidth, behavior: "smooth" });
+        });
+
+        
+        const updateCarouselProgress = () => {
+            const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+            if (maxScroll <= 0) return;
+            const scrollPercent = (carousel.scrollLeft / maxScroll);
+            scrollProgressBar.style.width = Math.max(16, scrollPercent * 100) + "%";
+
+            
+            const currentCard = Math.min(6, Math.max(1, Math.round((carousel.scrollLeft / maxScroll) * 5) + 1));
+            scrollIndicatorText.textContent = `Season ${currentCard} of 6`;
+        };
+
+        carousel.addEventListener("scroll", updateCarouselProgress);
+
+        
+        let isDown = false;
+        let startX;
+        let scrollLeftPos;
+
+        carousel.addEventListener('mousedown', (e) => {
+            isDown = true;
+            carousel.classList.add('cursor-grabbing');
+            carousel.classList.remove('cursor-grab');
+            startX = e.pageX - carousel.offsetLeft;
+            scrollLeftPos = carousel.scrollLeft;
+        });
+
+        carousel.addEventListener('mouseleave', () => {
+            isDown = false;
+            carousel.classList.remove('cursor-grabbing');
+            carousel.classList.add('cursor-grab');
+        });
+
+        carousel.addEventListener('mouseup', () => {
+            isDown = false;
+            carousel.classList.remove('cursor-grabbing');
+            carousel.classList.add('cursor-grab');
+        });
+
+        carousel.addEventListener('mousemove', (e) => {
+            if(!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - carousel.offsetLeft;
+            const walk = (x - startX) * 1.5;
+            carousel.scrollLeft = scrollLeftPos - walk;
+        });
+
+        
+        window.addEventListener('load', updateCarouselProgress);
+    </script>
+</body>
+</html>
